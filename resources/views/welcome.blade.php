@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home</title>
+    <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link" href="{{ url('/') }}">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/auctions') }}">Auctions</a>

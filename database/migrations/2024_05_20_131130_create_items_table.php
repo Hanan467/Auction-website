@@ -22,6 +22,8 @@ return new class extends Migration
             $table->float('bid_price');
             $table->string('condition');
             $table->string('image_path');
+            $table->boolean('is_approved');
+
         });
     }
 

@@ -19,12 +19,15 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('address');
-            $table->string('phone_no');
-            $table->string('organization_name')->nullable();
-            $table->string('payment_information');
+            // $table->string('first_name');
+            // $table->string('last_name');
+            // $table->string('address');
+            // $table->string('phone_no');
+            // $table->string('organization_name')->nullable();
+            // $table->string('payment_information');
+            $table->string('role')->default('seller');
+            //$table->boolean('is_deleted');
+            // $table->string('managed_by');
 
         });
 

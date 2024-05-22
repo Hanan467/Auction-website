@@ -60,6 +60,6 @@
     </div>
     <!-- login area end -->
 
-    <!-- jquery latest versionv>
+    <!-- jquery latest versionv-->
     </form>
 </x-guest-layout>
