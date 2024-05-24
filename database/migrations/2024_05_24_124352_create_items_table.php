@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('seller_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->text('description');
-            $table->string('category');
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->float('bid_price');
             $table->string('condition');
             $table->string('image_path');

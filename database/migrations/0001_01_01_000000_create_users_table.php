@@ -14,21 +14,19 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('username');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            // $table->string('first_name');
-            // $table->string('last_name');
-            // $table->string('address');
-            // $table->string('phone_no');
-            // $table->string('organization_name')->nullable();
-            // $table->string('payment_information');
+            $table->string('address')->nullable();
+            $table->string('phone_no');
+            $table->string('organization_name')->nullable();
+            $table->string('payment_information')->nullable();
             $table->string('role')->default('seller');
             $table->boolean('is_deleted')->default(false);
-            // $table->string('managed_by');
-
+            //$table->string('managed_by');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

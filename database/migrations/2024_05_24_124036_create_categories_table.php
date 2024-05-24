@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bidbidders', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('bidder_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('bid_id')->references('id')->on('bids')->onDelete('cascade');
-            $table->decimal('bid_amount');
+            $table->string('name');
+            $table->boolean('is_deleted');
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('bidbidders');
+        Schema::dropIfExists('categories');
     }
 };

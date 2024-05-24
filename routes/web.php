@@ -32,13 +32,16 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('bids/closed', [AdminAuctionController::class, 'closed'])->name('bids.closed');
     Route::get('categories', [AdminCategoryController::class, 'index'])->name('categories');
     Route::get('requests', [AdminRequestController::class, 'index'])->name('requests');
+    Route::get('categories/create', [AdminCategoryController::class, 'create'])->name('category.create');
 
-    Route::delete('admin/user/{id}', [AdminUserController::class, 'destroy'])->name('user.destroy');
-    Route::patch('admin/user/{id}', [AdminUserController::class, 'updateSeller'])->name('user.update');
+
+    Route::patch('users/destroy/{id}', [AdminUserController::class, 'destroy'])->name('users.destroy');
+    // Route::patch('user/{id}', [AdminUserController::class, 'updateSeller'])->name('user.update');
     Route::patch('requests/approve/{id}', [AdminRequestController::class, 'approveItem'])->name('requests.approve');
     Route::patch('requests/destroy/{id}', [AdminRequestController::class, 'destroyItem'])->name('requests.destroy');
     Route::get('bids/active/details/{id}', [AdminAuctionController::class, 'details'])->name('bids.active.details');
     Route::patch('bids/active/destroy/{id}', [AdminAuctionController::class, 'destroyBid'])->name('bids.active.destroy');
-
+    Route::post('categories/create', [AdminCategoryController::class, 'createCategory'])->name('category.create');
+    Route::patch('categories/destroy{id}', [AdminCategoryController::class, 'destroyCategory'])->name('category.destroy');
 
 });

@@ -24,12 +24,12 @@
                 <div class="col-12 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Sellers</h4>
+                                <h4 class="header-title">Bidders</h4>
                                 <div class="data-tables datatable-primary">
                                     <table id="dataTable2" class="text-center">
                                         <thead class="text-capitalize">
                                             <tr>
-                                                <th>Organization name</th>
+                                                <th>Name</th>
                                                 <th>Email</th>
                                                 <th>phone number</th>
                                                 <th>Address</th>
@@ -40,7 +40,7 @@
                                         <tbody>
                                         @foreach ($data as $user)
                         <tr>
-                            <td>{{ $user->organization_name }}</td>
+                            <td>{{ $user->name}}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->phone_no }}</td>
                             <td>{{ $user->address }}</td>

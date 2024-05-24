@@ -45,5 +45,88 @@
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+    <script>
+    function showForm(formType) {
+    var sellerLink = document.getElementById('seller-link');
+    var bidderLink = document.getElementById('bidder-link');
+
+    // Hide both forms initially
+    document.getElementById('seller-form').style.display = 'none';
+    document.getElementById('bidder-form').style.display = 'none';
+
+    // Remove active class from all links
+    sellerLink.classList.remove('active');
+    bidderLink.classList.remove('active');
+
+    // Show the selected form and add active class to the clicked link
+    if (formType === 'seller') {
+        document.getElementById('seller-form').style.display = 'block';
+        sellerLink.classList.add('active');
+    } else if (formType === 'bidder') {
+        document.getElementById('bidder-form').style.display = 'block';
+        bidderLink.classList.add('active');
+    }
+}
+
+// Function to handle the transition to the next step
+var currentStep = 1; // Initial step for seller form
+var currentStepP = 2; // Initial step for bidder form
+
+
+
+
+function nextStep(formType, currentStep) {
+  // Hide the current step
+  document.querySelector('#' + formType + '-form .step.step-' + currentStep).style.display = 'none';
+  
+  // Update current step
+    currentStep++;
+
+  // Show the next step
+  document.querySelector('#' + formType + '-form .step.step-' + currentStep).style.display = 'block'; // Use updated currentStep
+}
+
+function previousStep(formType, currentStepP) {
+
+    // Hide the current step
+    document.querySelector('#' + formType + '-form .step.step-' + currentStepP).style.display = 'none';
+  
+    // Update current step
+      currentStepP--;
+
+    // Show the previous step
+    document.querySelector('#' + formType + '-form .step.step-' + currentStepP).style.display = 'block'; // Use updated currentStep
+
+    // Handle being at the first step (e.g., disable button or show message)
+    console.log("Already at the first step");
+  
+}
+
+// Trigger the showForm function with 'seller' argument when the page is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    showForm('seller');
+});
+
+// Add event listeners to the "Next" and "Previous" links for both seller and bidder forms
+document.getElementById('seller-next').addEventListener('click', function() {
+    var currentStep = parseInt(document.querySelector('#seller-form .step.active').classList[1].replace('step-', ''));
+    nextStep('seller', currentStep);
+});
+
+document.getElementById('seller-previous').addEventListener('click', function() {
+    var currentStep = parseInt(document.querySelector('#seller-form .step.active').classList[1].replace('step-', ''));
+    previousStep('seller', currentStepP);
+});
+
+document.getElementById('bidder-next').addEventListener('click', function() {
+    var currentStep = parseInt(document.querySelector('#bidder-form .step.active').classList[1].replace('step-', ''));
+    nextStep('bidder', currentStep);
+});
+
+document.getElementById('bidder-previous').addEventListener('click', function() {
+    var currentStep = parseInt(document.querySelector('#bidder-form .step.active').classList[1].replace('step-', ''));
+    previousStep('bidder', currentStepP);
+});
+</script>
     </body>
 </html>

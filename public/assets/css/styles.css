@@ -2304,7 +2304,6 @@ table.dataTable thead td {
 
 
 /*-------------------- 23. Login ------------------- */
-
 .login-area {
     background: #F3F8FB;
 }
@@ -2318,7 +2317,7 @@ table.dataTable thead td {
 
 .login-box form {
     margin: auto;
-    width: 450px;
+    width: 470px;
     max-width: 100%;
     background: #fff;
     border-radius: 3px;
@@ -2412,6 +2411,7 @@ table.dataTable thead td {
 .submit-btn-area button {
     width: 100%;
     height: 50px;
+    margin: 10px;
     border: none;
     background: #fff;
     color: #585b5f;
@@ -2479,6 +2479,80 @@ table.dataTable thead td {
 .form-footer a {
     margin-left: 5px;
 }
+
+/* login-s2 */
+
+.login-s2 {
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.login-s2:before {
+    content: '';
+    position: absolute;
+    height: 206%;
+    width: 97%;
+    background: #fcfcff;
+    border-radius: 50%;
+    left: -42%;
+    z-index: -1;
+    top: -47%;
+    box-shadow: inset 0 0 51px rgba(0, 0, 0, 0.1);
+}
+
+.login-s2 .login-form-head,
+.login-s2 .login-box form,
+.login-s2 .login-box form .form-gp input {
+    background: transparent;
+}
+
+.login-s2 .login-form-head h4,
+.login-s2 .login-form-head p {
+    color: #444;
+}
+
+/* login-s3 */
+
+.login-bg {
+    background: url(../images/bg/singin-bg.jpg) center/cover no-repeat;
+    position: relative;
+    z-index: 1;
+}
+
+.login-bg:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background: #272727;
+    opacity: 0.7;
+}
+
+
+
+/* register 4 page */
+
+.login-box-s2 {
+    min-height: 100vh;
+    background: #f9f9f9;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.login-box-s2 form {
+    margin: auto;
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+}
+
 
 /* login-s2 */
 
