@@ -24,7 +24,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Route::get('admin/dashboard',[HomeController::class, 'index'])->middleware(['auth','admin']);
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::get('users/bidders', [AdminUserController::class, 'bidders'])->name('users.bidders');
@@ -32,8 +31,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('bids/active', [AdminAuctionController::class, 'active'])->name('bids.active');
     Route::get('bids/closed', [AdminAuctionController::class, 'closed'])->name('bids.closed');
     Route::get('categories', [AdminCategoryController::class, 'index'])->name('categories');
-    Route::get('items', [AdminRequestController::class, 'index'])->name('items');
+    Route::get('requests', [AdminRequestController::class, 'index'])->name('requests');
 
     Route::delete('admin/user/{id}', [AdminUserController::class, 'destroy'])->name('user.destroy');
     Route::patch('admin/user/{id}', [AdminUserController::class, 'updateSeller'])->name('user.update');
+    Route::patch('requests/approve/{id}', [AdminRequestController::class, 'approveItem'])->name('requests.approve');
+    Route::patch('requests/destroy/{id}', [AdminRequestController::class, 'destroyItem'])->name('requests.destroy');
+    Route::get('bids/active/details/{id}', [AdminAuctionController::class, 'details'])->name('bids.active.details');
+    Route::patch('bids/active/destroy/{id}', [AdminAuctionController::class, 'destroyBid'])->name('bids.active.destroy');
+
+
 });

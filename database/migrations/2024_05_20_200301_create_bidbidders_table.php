@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('bidder_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('bid_id')->references('id')->on('bids')->onDelete('cascade');
+            $table->decimal('bid_amount');
         });
     }
     /**

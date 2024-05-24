@@ -46,4 +46,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function bids()
+    {
+        return $this->hasMany(Bid::class, 'seller_id');
+    }
+
+    public function bidbidders()
+    {
+        return $this->hasMany(BidBidder::class, 'bidder_id');
+    }
 }

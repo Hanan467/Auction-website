@@ -26,7 +26,7 @@ return new class extends Migration
             // $table->string('organization_name')->nullable();
             // $table->string('payment_information');
             $table->string('role')->default('seller');
-            //$table->boolean('is_deleted');
+            $table->boolean('is_deleted')->default(false);
             // $table->string('managed_by');
 
         });

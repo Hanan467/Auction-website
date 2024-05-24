@@ -20,18 +20,18 @@
                             <li><a href="{{ route('admin.users.sellers') }}">Sellers</a></li>
                         </ul>
                     </li>
-                    <li class="{{ request()->is('admin/bids*') ? 'active' : '' }}">
+                    <li class="{{ request()->is('admin/bids/*') ? 'active' : '' }}">
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Bids</span></a>
                         <ul class="collapse">
-                            <li><a href="{{ route('admin.bids.active') }}">Active bids</a></li>
-                            <li><a href="{{ route('admin.bids.closed') }}">Closed bids</a></li>
+                            <li class="{{ request()->is('admin/bids/active') ? 'active' : '' }}"><a href="{{ route('admin.bids.active') }}">Active bids</a></li>
+                            <li class="{{ request()->is('admin/bids/closed') ? 'active' : '' }}"><a href="{{ route('admin.bids.closed') }}">Closed bids</a></li>
                         </ul>
                     </li>
                     <li class="{{ request()->is('admin/categories') ? 'active' : '' }}">
                         <a href="{{ route('admin.categories') }}" aria-expanded="true"><i class="ti-pie-chart"></i><span>Categories</span></a>
                     </li>
-                    <li class="{{ request()->is('admin/items') ? 'active' : '' }}">
-                        <a href="{{ route('admin.items') }}" aria-expanded="true"><i class="ti-palette"></i><span>Request</span></a>
+                    <li class="{{ request()->is('admin/requests') ? 'active' : '' }}">
+                        <a href="{{ route('admin.requests') }}" aria-expanded="true"><i class="ti-palette"></i><span>Request</span></a>
                     </li>
                 </ul>
             </nav>
