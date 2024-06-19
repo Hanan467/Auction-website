@@ -18,4 +18,15 @@ class item extends Model
     {
         return $this->belongsTo(User::class, 'seller_id');
     }
+
+    protected $fillable = [
+        'name',
+        'description',
+        'bid_price',
+        'category_id', 
+        'admin_id',
+        'seller_id',
+        'condition',
+        'image_path',
+    ];
 }

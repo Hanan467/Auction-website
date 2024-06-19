@@ -4,7 +4,9 @@ use App\Http\Controllers\AdminAuctionController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminRequestController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\BidController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,5 +45,20 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::patch('bids/active/destroy/{id}', [AdminAuctionController::class, 'destroyBid'])->name('bids.active.destroy');
     Route::post('categories/create', [AdminCategoryController::class, 'createCategory'])->name('category.create');
     Route::patch('categories/destroy{id}', [AdminCategoryController::class, 'destroyCategory'])->name('category.destroy');
+
+});
+
+Route::middleware(['auth','seller'])->prefix('seller')->name('seller.')->group(function(){
+    Route::get('dashboard', [HomeController::class, 'seller'])->name('dashboard');
+    Route::get('myitems/listed',[ItemController::class, 'approved'])->name('myitems.listed');
+    Route::get('myitems/pending',[ItemController::class, 'pending'])->name('myitems.pending');
+    Route::get('additems',[ItemController::class, 'create'])->name('additems');
+    Route::post('additems',[ItemController::class, 'store'])->name('additem');
+
+});
+
+Route::middleware(['auth','bidder'])->prefix('bidder')->name('bidder.')->group(function(){
+    Route::get('dashboard', [HomeController::class, 'bidder'])->name('dashboard');
+    Route::get('auctions',[BidController::class, 'index'])->name('auctions');
 
 });

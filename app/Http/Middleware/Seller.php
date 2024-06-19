@@ -16,8 +16,8 @@ class Seller
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role === 'seller'){
-            return redirect('dashboard');
+        if(Auth::user()->role !== 'seller'){
+            return redirect('/');
         }
         return $next($request);
     }

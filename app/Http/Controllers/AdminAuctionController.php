@@ -14,7 +14,7 @@ class AdminAuctionController extends Controller
         $bids = item::select(
             'items.name as item_name',
             'items.image_path',
-            'items.category',
+            'categories.name',
             'bidbidders.bid_amount',
             'sellers.name as seller_name',
             'bidders.name as bidder_name'
@@ -23,6 +23,7 @@ class AdminAuctionController extends Controller
         ->join('users as sellers', 'items.seller_id', '=', 'sellers.id')
         ->join('bidbidders', 'bids.id', '=', 'bidbidders.bid_id')
         ->join('users as bidders', 'bidbidders.bidder_id', '=', 'bidders.id')
+        ->join('categories', 'categories.id', '=', 'items.category_id')
         ->where('bids.bid_status', 0)
         ->whereIn('bidbidders.bid_amount', function ($query) {
             $query->select(DB::raw('MAX(bidbidders.bid_amount)'))
@@ -32,7 +33,6 @@ class AdminAuctionController extends Controller
                   ->groupBy('bids.item_id');
         })
         ->get();
-
                     return view('admin.bids.closed', compact('bids'));
         
     }
@@ -41,7 +41,7 @@ class AdminAuctionController extends Controller
         $bids = item::select(
             'items.name as item_name',
             'items.image_path',
-            'items.category',
+            'categories.name',
             'bidbidders.bid_amount',
             'bidbidders.bid_id',
             'sellers.name as seller_name',
@@ -51,7 +51,8 @@ class AdminAuctionController extends Controller
         ->join('users as sellers', 'items.seller_id', '=', 'sellers.id')
         ->join('bidbidders', 'bids.id', '=', 'bidbidders.bid_id')
         ->join('users as bidders', 'bidbidders.bidder_id', '=', 'bidders.id')
-        ->where('bids.bid_status', 1)
+        ->join('categories', 'categories.id', '=', 'items.category_id')
+        ->where('bids.bid_status', 1)->where('items.is_approved',1)
         ->whereIn('bidbidders.bid_amount', function ($query) {
             $query->select(DB::raw('MAX(bidbidders.bid_amount)'))
                   ->from('bidbidders')
@@ -74,7 +75,7 @@ class AdminAuctionController extends Controller
         ->join('bids', 'bids.item_id', '=', 'items.id')
         ->join('bidbidders', 'bids.id', '=', 'bidbidders.bid_id')
         ->join('users as bidders', 'bidbidders.bidder_id', '=', 'bidders.id')
-        ->where('bids.bid_status', 1 && 'bidbidders.bid_id', $id)
+        ->where('bids.bid_status', 1)->where('bids.item_id',$id)
         ->get();
         return view('admin.bids.details', compact('bids'));
     }
