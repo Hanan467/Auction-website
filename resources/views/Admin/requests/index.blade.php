@@ -46,7 +46,7 @@
                             @foreach ($items as $item)
 
                                 <tr>
-                                    <td><img src="{{ asset('storage/' .$item->image_path) }}" alt="{{$item->item_name }}" style="width: 50px; height: 50px;"></td>
+                                    <td><img src="{{ $item->image_path}}" alt="{{$item->item_name }}" style="width: 200px; height: 100px;"></td>
                                     <td>{{$item->name }}</td>
                                     <td>{{$item->category }}</td>
                                     <td>{{$item->description }}</td>
@@ -86,7 +86,7 @@
         $(document).ready(function() {
             setTimeout(function() {
                 $(".alert").alert('close');
-            }, 5000); // 5000 milliseconds = 5 seconds
+            }, 5000); 
         });
     </script>
 @endsection

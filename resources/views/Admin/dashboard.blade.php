@@ -12,10 +12,10 @@
                     <div class="s-sale-inner pt--30 mb-3">
                         <div class="s-report-title d-flex justify-content-between">
                             <h4 class="header-title mb-0">Bids</h4>
-                            <select class="custome-select border-0 pr-3">
-                                <option selected="">Last 7 Days</option>
-                                <option value="0">Last 7 Days</option>
-                            </select>
+                       
+                        </div>
+                        <div class="mt-2">
+                            <h2>{{ $totalActiveBids }}</h2>
                         </div>
                     </div>
                     <canvas id="coin_sales4" height="100"></canvas>
@@ -26,10 +26,10 @@
                     <div class="s-sale-inner pt--30 mb-3">
                         <div class="s-report-title d-flex justify-content-between">
                             <h4 class="header-title mb-0">Auctions</h4>
-                            <select class="custome-select border-0 pr-3">
-                                <option selected="">Last 7 Days</option>
-                                <option value="0">Last 7 Days</option>
-                            </select>
+                            
+                        </div>
+                        <div class="mt-2">
+                            <h2>{{ $totalAuctions }}</h2>
                         </div>
                     </div>
                     <canvas id="coin_sales5" height="100"></canvas>
@@ -40,10 +40,10 @@
                     <div class="s-sale-inner pt--30 mb-3">
                         <div class="s-report-title d-flex justify-content-between">
                             <h4 class="header-title mb-0">Categories</h4>
-                            <select class="custome-select border-0 pr-3">
-                                <option selected="">Last 7 Days</option>
-                                <option value="0">Last 7 Days</option>
-                            </select>
+                           
+                        </div>
+                        <div class="mt-2">
+                            <h2>{{ $totalCategories }}</h2>
                         </div>
                     </div>
                     <canvas id="coin_sales6" height="100"></canvas>
@@ -58,6 +58,9 @@
                                 <option selected="">Last 7 Days</option>
                                 <option value="0">Last 7 Days</option>
                             </select>
+                        </div>
+                        <div class="mt-2">
+                            <h2>{{ $newCustomers }}</h2>
                         </div>
                     </div>
                     <canvas id="coin_sales7" height="100"></canvas>
@@ -75,63 +78,27 @@
                 <table class="dbkit-table">
                     <tbody>
                         <tr class="heading-td">
-                            <td>Product Name</td>
-                            <td>Product Code</td>
-                            <td>Category</td>
-                            <td>Seller</td>
-                            <td>Bidder</td>
-                            <td>Price</td>
+                                <th>Image</th>
+                                <th>Item</th>
+                                <th>Category</th>
+                                <th>Seller Name</th>
+                                <th>Top bidder</th>
+                                <th>Amount</th>
                         </tr>
-                        <tr>
-                            <td>Lady's Sunglass</td>
-                            <td>#894750374</td>
-                            <td><span class="pending_dot">Pending</span></td>
-                            <td>01976 74 92 00</td>
-                            <td>9241</td>
-                            <td>View Order</td>
-                        </tr>
-                        <tr>
-                            <td>Lady's Sunglass</td>
-                            <td>#894750374</td>
-                            <td><span class="shipment_dot">Shipment</span></td>
-                            <td>01976 74 92 00</td>
-                            <td>9241</td>
-                            <td>View Order</td>
-                        </tr>
-                        <tr>
-                            <td>Lady's Sunglass</td>
-                            <td>#894750374</td>
-                            <td><span class="pending_dot">Pending</span></td>
-                            <td>01976 74 92 00</td>
-                            <td>9241</td>
-                            <td>View Order</td>
-                        </tr>
-                        <tr>
-                            <td>Lady's Sunglass</td>
-                            <td>#894750374</td>
-                            <td><span class="confirmed_dot">Confirmed</span></td>
-                            <td>01976 74 92 00</td>
-                            <td>9241</td>
-                            <td>View Order</td>
-                        </tr>
-                        <tr>
-                            <td>Lady's Sunglass</td>
-                            <td>#894750374</td>
-                            <td><span class="pending_dot">Pending</span></td>
-                            <td>01976 74 92 00</td>
-                            <td>9241</td>
-                            <td>View Order</td>
-                        </tr>
+                        @foreach ($todaysBids as $bid)
+                            <tr>
+                            <td><img src="{{ $bid->image_path }}" alt="{{ $bid->item_name }}" style="width: 200px; height: 100px;"></td>
+                                    <td>{{ $bid->item_name }}</td>
+                                    <td>{{ $bid->name }}</td>
+                                    <td>{{ $bid->seller_name }}</td>
+                                    <td>{{ $bid->bidder_name }}</td>
+                                    <td>{{ $bid->bid_amount }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
             <div class="pagination_area pull-right mt-5">
-                <ul>
-                    <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                </ul>
             </div>
         </div>
     </div>

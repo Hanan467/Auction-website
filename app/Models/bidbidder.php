@@ -13,4 +13,10 @@ class bidbidder extends Model
     {
         return $this->belongsTo(Bid::class);
     }
+
+    protected $fillable = [
+        'bidder_id',
+        'bid_id',
+        'bid_amount', 
+    ];
 }

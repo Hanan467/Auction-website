@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminRequestController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\BidController;
+use App\Http\Controllers\BidderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
@@ -60,5 +61,8 @@ Route::middleware(['auth','seller'])->prefix('seller')->name('seller.')->group(f
 Route::middleware(['auth','bidder'])->prefix('bidder')->name('bidder.')->group(function(){
     Route::get('dashboard', [HomeController::class, 'bidder'])->name('dashboard');
     Route::get('auctions',[BidController::class, 'index'])->name('auctions');
-
+    Route::get('auctions/{category?}', [BidController::class, 'index'])->name('auctions.filter'); 
+    Route::get('auction/{id}',[BidController::class, 'bid'])->name('auctions.bid');
+    Route::post('auctions',[BidController::class, 'placebid'])->name('auctions.placebid');
+    Route::get('history',[BidderController::class, 'index'])->name('auctions.history');
 });

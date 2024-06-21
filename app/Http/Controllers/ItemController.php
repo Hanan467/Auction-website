@@ -53,7 +53,7 @@ class ItemController extends Controller
         )
         ->join('categories', 'categories.id', '=', 'items.category_id')        
         ->where('items.seller_id', $sellerId)
-        ->where('items.is_approved', 0) // Prefix with the table name to avoid ambiguity
+        ->where('items.is_approved', 0) 
         ->get();
         return view ('seller.myitems.pending', compact('items'));
     }

@@ -45,9 +45,9 @@
                             @foreach ($bids as $bid)
 
                                 <tr>
-                                    <td><img src="{{ asset('storage/' . $bid->image_path) }}" alt="{{ $bid->item_name }}" style="width: 50px; height: 50px;"></td>
+                                    <td><img src="{{ $bid->image_path }}" alt="{{ $bid->item_name }}" style="width: 200px; height: 100px;"></td>
                                     <td>{{ $bid->item_name }}</td>
-                                    <td>{{ $bid->category }}</td>
+                                    <td>{{ $bid->name }}</td>
                                     <td>{{ $bid->seller_name }}</td>
                                     <td>{{ $bid->bidder_name }}</td>
                                     <td>{{ $bid->bid_amount }}</td>

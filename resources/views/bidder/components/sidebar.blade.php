@@ -5,15 +5,14 @@
                 <div class="horizontal-menu">
                     <nav>
                         <ul id="nav_menu">
-                        <a href="{{ route('bidder.dashboard') }}"><i class="ti-dashboard"></i><span>  Dashboard</span></a>
-                            </li>
+                       
                             <li class="active">
                                 <a href="{{ route('bidder.auctions') }}"><i class="ti-layout-list-thumb"></i><span>Auctions
                                         </span></a>
                     
                             </li>
                             <li>
-                                <a href="" i class="ti-pie-chart"></i><span>  Bid history</span></a>
+                                <a href="{{ route('bidder.auctions.history') }}" i class="ti-pie-chart"></i><span>  Bid history</span></a>
                             </li>
                             <!-- Add more menu items as needed -->
                         </ul>
